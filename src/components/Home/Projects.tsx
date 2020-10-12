@@ -44,7 +44,8 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                   </p>
 
                   <a
-                    href="https://stylessh.github.io/portfolios"
+                    href={project.url}
+                    target="_blank"
                     className={styles.link_to}
                   >
                     Take a look!
@@ -58,8 +59,8 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 >
                   <img
                     className="wow fadeIn"
-                    src={`${process.env.SERVER_URI}${project.images[0].url}`}
-                    alt="Work 1"
+                    src={project.images[0].url}
+                    alt={project.name}
                   />
                 </a>
               </div>
@@ -77,8 +78,8 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 >
                   <img
                     className="wow fadeIn"
-                    src={`${process.env.SERVER_URI}${project.images[0].url}`}
-                    alt="Work 1"
+                    src={project.images[0].url}
+                    alt={project.name}
                   />
                 </a>
 
@@ -101,7 +102,8 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                   </p>
 
                   <a
-                    href="https://stylessh.github.io/portfolios"
+                    href={project.url}
+                    target="_blank"
                     className={styles.link_to}
                   >
                     Take a look!

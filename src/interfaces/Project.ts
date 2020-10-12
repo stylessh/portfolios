@@ -3,6 +3,7 @@ export interface IProject {
   name: string;
   role: string[];
   technologies: string[];
+  url: string;
 
   right: boolean;
 
