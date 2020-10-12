@@ -1,0 +1,18 @@
+body.dark {
+  // colors
+  --mainbackground: #0f0f0f; // light: #fff
+  --maincolor: #fff; // light: #0f0f0f
+  --secondarycolor: #ccc; // light: #7a7a7a
+
+  // fonts
+  --mainfont: "Roboto Mono", monospace;
+}
+
+body {
+  --mainbackground: #fff; // light: #fff
+  --maincolor: #0f0f0f; // light: #0f0f0f
+  --secondarycolor: #7a7a7a; // light: #7a7a7a
+
+  // fonts
+  --mainfont: "Roboto Mono", monospace;
+}

@@ -1,0 +1,46 @@
+.posts {
+  width: 80%;
+  max-width: 1200px;
+  margin: 4em auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .post {
+    background: var(--mainbackground);
+    border: 1px solid var(--secondarycolor);
+    padding: 2em;
+    margin: 2em 0;
+
+    .postHeader {
+      .postTitle {
+        font-size: 4em;
+        cursor: pointer;
+      }
+
+      .date {
+        font-weight: 400;
+        font-size: 1.2em;
+        color: var(--secondarycolor);
+        margin: 1em 0;
+      }
+
+      .tags {
+        margin: 1em 0;
+
+        li {
+          display: inline-block;
+
+          &:not(:first-child) {
+            margin: 0 1em;
+          }
+        }
+      }
+    }
+
+    .postBody {
+      margin: 2em 0;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+// variables
+@import "./components/variables";
+
+// general styles
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--maincolor);
+  font-family: var(--mainfont);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+body {
+  background: var(--mainbackground);
+  overflow-x: hidden;
+}
+
+// mixins
+@import "./components/mixins";

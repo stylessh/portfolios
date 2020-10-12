@@ -1,0 +1,137 @@
+@import './_mixins';
+
+.about {
+  height: 100vh;
+  .grid_2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+    margin: 0px auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    h2 {
+      font-size: 1.8em;
+    }
+
+    .line {
+      @include line;
+      margin: 20px;
+    }
+  }
+
+  .info {
+    .me {
+      p:not(:first-child) {
+        margin: 15px 0;
+      }
+
+      a {
+        @include link;
+        margin-left: .5em;
+      }
+    }
+
+    .technologies {
+      p {
+        margin: 20px 0;
+      }
+
+      .list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .right {
+        margin-left: 3rem;
+      }
+
+      li {
+        list-style-position: inside;
+        margin: 5px 0;
+        color: var(--secondarycolor);
+      }
+    }
+  }
+
+  .image {
+    position: relative;
+    text-align: center;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 400px;
+      height: 100%;
+      background: transparent;
+
+      border: 2px solid var(--maincolor);
+      top: 50px;
+      right: 50px;
+
+      z-index: -1;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 400px;
+      box-shadow: 5px 10px 20px rgba(1, 1, 1, 0.1);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    height: auto;
+    margin-bottom: 50px;
+    .grid_2 {
+      grid-template-columns: 1fr;
+      row-gap: 50px;
+      text-align: center;
+    }
+
+    .header {
+      text-align: center;
+      .line {
+        margin: 20px auto;
+      }
+    }
+
+    .info {
+      .technologies {
+        .list {
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+
+          list-style: none;
+        }
+
+        .right {
+          margin: 0;
+        }
+      }
+    }
+
+    .image {
+      &::after {
+        right: 50px;
+        top: 20px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

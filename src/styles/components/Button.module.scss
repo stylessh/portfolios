@@ -1,0 +1,21 @@
+.button {
+  display: block;
+  width: 100%;
+  padding: 1em 0;
+
+  font-size: .9em;
+  font-weight: 700;
+  
+  cursor: pointer;
+  border: 2px solid #111;
+
+  &.primary {
+    background: #31f794;
+    color: #111;
+  }
+
+  &.secondary {
+    background: #b3b3b3;
+    color: #111;
+  }
+}

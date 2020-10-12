@@ -1,0 +1,121 @@
+@import "./mixins";
+
+.projects {
+  .header {
+    margin: 60px 0;
+    text-align: center;
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .line {
+      @include line;
+      margin: auto;
+    }
+  }
+
+  .grid_2 {
+    display: grid;
+    margin: 50px 0;
+  }
+
+  .left {
+    grid-template-columns: 60% 1fr;
+  }
+
+  .right {
+    grid-template-columns: 1fr 60%;
+  }
+
+  .work {
+    color: var(--maincolor);
+
+    .work_image {
+      text-decoration: none;
+
+      transition: all 0.2s ease-in-out;
+
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 50px;
+
+      .counter {
+        font-size: 1em;
+      }
+
+      .project_name {
+        font-size: 3em;
+        margin-top: 50px;
+      }
+
+      .role,
+      .technologies {
+        span {
+          font-weight: 700;
+          display: block;
+          margin: 10px 0;
+        }
+
+        font-size: 1em;
+        margin-top: 30px;
+      }
+
+      .date {
+        margin: 30px 0;
+        font-size: 0.9em;
+        font-weight: 700;
+      }
+
+      .link_to {
+        color: var(--secondarycolor);
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 20px 0;
+
+        // display: none;
+
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--maincolor);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects {
+    .left,
+    .right {
+      grid-template-areas:
+        "info info"
+        "image image";
+    }
+
+    .work {
+      .work_image {
+        grid-area: image;
+      }
+
+      .info {
+        grid-area: info;
+        padding: 50px 30px;
+
+        .link_to {
+          display: block;
+        }
+      }
+    }
+  }
+}
