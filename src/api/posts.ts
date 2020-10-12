@@ -9,14 +9,12 @@ export const getPosts = async (start?: number) => {
     );
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
 export const getPostsNum = async () => {
   const { data } = await axios.get(`${process.env.SERVER_URI}/posts/count`);
-
-  console.log(data);
 
   return data;
 };

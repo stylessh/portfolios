@@ -9,8 +9,6 @@ type ProjectsType = {
 };
 
 const HomeProjects: FC<ProjectsType> = ({ projects }) => {
-  console.log(projects);
-
   return (
     <>
       <div id="projects"></div>
@@ -20,7 +18,7 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
           <div className={`${styles.line} wow fadeInUp`}></div>
         </div>
 
-        {projects.map((project: IProject) => {
+        {projects.map((project: IProject, i: number) => {
           if (project.right) {
             return (
               <div
@@ -28,9 +26,9 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 key={project.id}
               >
                 <div className={styles.info}>
-                  <p
-                    className={`${styles.counter} wow fadeInUp`}
-                  >{`0${project.id} / 0${projects.length}`}</p>
+                  <p className={`${styles.counter} wow fadeInUp`}>{`0${
+                    i + 1
+                  } / 0${projects.length}`}</p>
                   <h2 className={`${styles.project_name} wow fadeInUp`}>
                     {project.name}
                   </h2>
@@ -85,9 +83,9 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 </a>
 
                 <div className={styles.info}>
-                  <p
-                    className={`${styles.counter} wow fadeInUp`}
-                  >{`0${project.id} / 0${projects.length}`}</p>
+                  <p className={`${styles.counter} wow fadeInUp`}>{`0${
+                    i + 1
+                  } / 0${projects.length}`}</p>
                   <h2 className={`${styles.project_name} wow fadeInUp`}>
                     {project.name}
                   </h2>
