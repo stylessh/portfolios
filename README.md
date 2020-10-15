@@ -1,30 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Stylessh
 
-## Getting Started
+This is the source code of my portfolio's frontend.
 
-First, run the development server:
+### Don't be aware to take a look into it!
 
-```bash
-npm run dev
-# or
-yarn dev
+## Enviroment
+
+This website is using Next.js as frontend framework. And some awesome animations libraries (such as Framer Motion, GSAP).
+
+
+## Installation
+
+- First of all, you have to clone this repo.
+
+```bash 
+git clone https://github.com/stylessh/portfolios.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Then, get inside in the folder and install all the packages with:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-## Learn More
+> If you don't have *yarn* installed, enter the following command: `npm i yarn -g`
 
-To learn more about Next.js, take a look at the following resources:
+- And now, you just have to run `next dev` to start a development server of my website.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Created with love by [stylessh](https://github/stylessh) <3
