@@ -12,13 +12,24 @@
   box-sizing: border-box;
   color: var(--maincolor);
   font-family: var(--mainfont);
-  transition: all 0.2s ease-in-out;
   outline: none;
 }
 
 body {
   background: var(--mainbackground);
   overflow-x: hidden;
+  font-size: 16px;
+  overscroll-behavior-y: none;
+}
+
+.app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: max-content;
+  width: 100%;
+
+  overflow: hidden;
 }
 
 // mixins

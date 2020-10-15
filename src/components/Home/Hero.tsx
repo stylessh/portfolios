@@ -1,6 +1,7 @@
 import styles from "@Styles/components/Hero.module.scss";
+import { FC } from "react";
 
-const HomeHero = () => {
+const HomeHero: FC = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.header}>

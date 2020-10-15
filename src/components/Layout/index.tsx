@@ -1,12 +1,9 @@
-import React from "react";
-import Navbar from "@Components/Navbar";
+import React, { FC } from "react";
 
-const Layout = ({ children }) => {
+const Layout: FC = ({ children }: any) => {
   return (
     <>
-      <Navbar />
-
-      {children}
+      <main className="wrapper">{children}</main>
     </>
   );
 };

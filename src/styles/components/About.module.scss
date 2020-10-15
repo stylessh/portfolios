@@ -1,4 +1,4 @@
-@import './_mixins';
+@import "./_mixins";
 
 .about {
   height: 100vh;
@@ -28,14 +28,22 @@
   }
 
   .info {
-    .me {
-      p:not(:first-child) {
-        margin: 15px 0;
-      }
+    .mask {
+      overflow: hidden;
+    }
 
+    p:not(:first-child) {
+      margin: 15px 0;
+    }
+
+    h2 {
+      height: 40px;
+    }
+
+    .me {
       a {
         @include link;
-        margin-left: .5em;
+        margin-left: 0.5em;
       }
     }
 

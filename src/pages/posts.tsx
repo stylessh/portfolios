@@ -1,6 +1,6 @@
 import moment from "moment";
 import Link from "next/link";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { useRouter } from "next/router";
 
 import Head from "@Components/Head";
 import Layout from "@Components/Layout";
@@ -17,7 +17,10 @@ type PostsProps = {
 };
 
 const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
+  const router = useRouter();
+
   const [posts, setPosts] = useState<IPost[]>([]);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
     setPosts(data);
@@ -27,25 +30,17 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
     const newPosts: IPost[] = await getPosts(posts.length);
 
     setPosts([...posts, ...newPosts]);
+
+    // pushing a query to refresh body height in app
+    router.push("?loading_more=true");
   };
 
   return (
     <Layout>
       <Head title="Posts" />
       <main className={styles.posts}>
-        {posts.length > 0 ? (
-          <InfiniteScroll
-            dataLength={posts.length}
-            next={loadMorePost}
-            hasMore={postsLength > posts.length}
-            loader={<h4 style={{ textAlign: "center" }}>loading...</h4>}
-            endMessage={
-              <p style={{ textAlign: "center" }}>
-                <b>Yay! You have seen it all</b>
-              </p>
-            }
-          >
-            {posts.map((post) => (
+        {posts.length > 0
+          ? posts.map((post) => (
               <section className={styles.post} key={post.id}>
                 <article className={styles.postHeader}>
                   <Link href={`/posts/${post.slug}`}>
@@ -63,9 +58,17 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
                   </ul>
                 </article>
               </section>
-            ))}
-          </InfiniteScroll>
-        ) : null}
+            ))
+          : null}
+
+        <span
+          className={`${styles.load_more} ${
+            hasMore ? `${styles.has_more}` : ""
+          }`}
+          onMouseEnter={loadMorePost}
+        >
+          hover here to load more posts.
+        </span>
       </main>
     </Layout>
   );
@@ -73,7 +76,7 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
 
 export async function getStaticProps() {
   const data: IPost[] = await getPosts();
-  const postsLength = await getPostsNum();
+  const postsLength: number = await getPostsNum();
 
   return {
     props: { data, postsLength },

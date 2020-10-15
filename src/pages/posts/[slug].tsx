@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { FC, useEffect, useState } from "react";
 import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
 import { useRouter } from "next/router";
@@ -14,7 +13,7 @@ import { IPost } from "@Interfaces/Post";
 
 import styles from "@Styles/Post.module.scss";
 
-const Post = () => {
+const Post: FC = () => {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -22,7 +21,7 @@ const Post = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getPost(slug);
+      const data: IPost = await getPost(slug);
 
       setPost(data);
     };
@@ -37,9 +36,7 @@ const Post = () => {
           <Head title={post.title} />
           <section className={styles.post} key={post.id}>
             <article className={styles.postHeader}>
-              <Link href={`/posts/${post.slug}`}>
-                <h2 className={styles.postTitle}>{post.title}</h2>
-              </Link>
+              <h2 className={styles.postTitle}>{post.title}</h2>
 
               <h3 className={styles.date}>
                 {moment(post.published_at).format("LLL")}

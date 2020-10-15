@@ -1,5 +1,4 @@
-import React from "react";
-import Navbar from "@Components/Navbar";
+import React, { FC } from "react";
 
 import Hero from "@Components/Home/Hero";
 import About from "@Components/Home/About";
@@ -12,8 +11,13 @@ import Head from "@Components/Head";
 import Layout from "@Components/Layout";
 
 import { getProjects } from "@Api/projects";
+import { IProject } from "@Interfaces/Project";
 
-const Home = ({ projects }) => {
+type HomeProps = {
+  projects: IProject[];
+};
+
+const Home: FC<HomeProps> = ({ projects }) => {
   return (
     <Layout>
       <Head title="Home" />
@@ -29,7 +33,7 @@ const Home = ({ projects }) => {
 };
 
 export async function getStaticProps() {
-  const projects = await getProjects();
+  const projects: IProject[] = await getProjects();
 
   return {
     props: { projects },

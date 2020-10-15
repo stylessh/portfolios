@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import styles from "@Styles/components/Contact.module.scss";
 
-const HomeContact = () => {
+const HomeContact: FC = () => {
   return (
     <>
       <div id="contact"></div>
