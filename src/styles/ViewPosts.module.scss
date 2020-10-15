@@ -1,7 +1,7 @@
 .posts {
   width: 80%;
   max-width: 1200px;
-  margin: 4em auto;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -42,5 +42,34 @@
     .postBody {
       margin: 2em 0;
     }
+  }
+
+  .load_more {
+    display: none;
+
+    cursor: crosshair;
+    text-align: center;
+    padding-bottom: 2em;
+    color: var(--secondarycolor);
+
+    &.has_more {
+      display: block;
+    }
+
+    animation: pop 2s infinite ease-in-out;
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

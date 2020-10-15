@@ -2,7 +2,9 @@
 
 .footer {
   width: 90%;
-  margin: 40px auto;
+  margin: 0 auto;
+
+  padding-bottom: 5em;
 
   .text {
     text-align: right;
@@ -49,7 +51,7 @@
 @media screen and (max-width: 768px) {
   .footer {
     width: 90%;
-    margin: 20px auto;
+    margin: 4em auto;
 
     .text {
       text-align: center;

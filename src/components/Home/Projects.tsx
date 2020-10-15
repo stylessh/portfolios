@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { motion } from "framer-motion";
 
 import styles from "@Styles/components/Projects.module.scss";
 
@@ -7,6 +8,8 @@ import { IProject } from "@Interfaces/Project";
 type ProjectsType = {
   projects: IProject[];
 };
+
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
 const HomeProjects: FC<ProjectsType> = ({ projects }) => {
   return (
@@ -42,22 +45,23 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                     <span>Technologies:</span>
                     {project.technologies.map((t) => `${t}. `)}
                   </p>
-
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    className={styles.link_to}
-                  >
-                    Take a look!
-                  </a>
                 </div>
 
                 <a
-                  href="https://stylessh.github.io/portfolios"
+                  href={project.url}
                   target="_blank"
                   className={styles.work_image}
                 >
-                  <img
+                  <motion.img
+                    initial={{ filter: "grayscale(1)" }}
+                    whileHover={{
+                      scale: 1.02,
+                      filter: "grayscale(0)",
+                    }}
+                    transition={{
+                      ...transition,
+                      duration: 0.3,
+                    }}
                     className="wow fadeIn"
                     src={project.images[0].url}
                     alt={project.name}
@@ -72,11 +76,20 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 key={project.id}
               >
                 <a
-                  href="https://stylessh.github.io/portfolios"
+                  href={project.url}
                   target="_blank"
                   className={styles.work_image}
                 >
-                  <img
+                  <motion.img
+                    initial={{ filter: "grayscale(1)" }}
+                    whileHover={{
+                      scale: 1.02,
+                      filter: "grayscale(0)",
+                    }}
+                    transition={{
+                      ...transition,
+                      duration: 0.3,
+                    }}
                     className="wow fadeIn"
                     src={project.images[0].url}
                     alt={project.name}
@@ -100,14 +113,6 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                     <span>Technologies:</span>
                     {project.technologies.map((t) => `${t}. `)}
                   </p>
-
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    className={styles.link_to}
-                  >
-                    Take a look!
-                  </a>
                 </div>
               </div>
             );

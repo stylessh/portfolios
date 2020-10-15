@@ -1,14 +1,16 @@
 .navbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background: transparent;
-  padding: 30px;
+  padding: 2em 0;
   z-index: 9999;
+
+  width: 90%;
+  margin: auto;
+
   transition: all 0.2s ease-in-out;
+
+  // border: 1px solid var(--secondarycolor);
 
   &::before {
     content: "";
@@ -27,22 +29,24 @@
     transition: all 0.2s ease-in-out;
   }
 
-  &.active {
-    padding: 20px;
-  }
-
   &.hover {
     &::before {
       height: 100%;
     }
   }
 
+  &.hide {
+    top: -200px;
+  }
+
   ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 40%;
     list-style: none;
+  }
+
+  li {
+    display: inline-block;
+
+    margin: 0 1em;
   }
 
   a {
@@ -70,7 +74,7 @@
 
 @media screen and (max-width: 768px) {
   .navbar {
-    padding: 10px 0;
+    padding: 2em 0;
 
     .btn_menu {
       display: block;

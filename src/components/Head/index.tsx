@@ -6,7 +6,7 @@ type HeadProps = {
   description?: string;
 };
 
-const DEFAULT_DESC = "A markdown blog.";
+const DEFAULT_DESC: string = "A markdown blog.";
 
 const capitalize = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
@@ -17,7 +17,7 @@ const Head: FC<HeadProps> = ({ title, description }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
       <meta name="description" content={description || DEFAULT_DESC} />
-      <title>Blogdown | {capitalize(title)}</title>
+      <title>Stylessh | {capitalize(title)}</title>
     </NextHead>
   );
 };
