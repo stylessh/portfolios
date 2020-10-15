@@ -1,12 +1,11 @@
 import { FC, useEffect, useState, useRef } from "react";
 import Link from "next/link";
-
 import { useRouter } from "next/router";
-
 import { motion } from "framer-motion";
 
+import Hamburguer from "@Components/Hamburguer";
+
 import styles from "@Styles/components/Navbar.module.scss";
-import { route } from "next/dist/next-server/server/router";
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -15,11 +14,37 @@ const Navbar: FC = () => {
 
   const router = useRouter();
 
+  const [open, setOpen] = useState({
+    initial: false,
+    clicked: null,
+    menuName: "menu.",
+  });
+
+  const [disable, setDisable] = useState(false);
+
   const [theme, setTheme] = useState<string>("");
   const [hover, setHover] = useState<boolean>(false);
 
   useEffect(() => {
+    const exit = () => {
+      setOpen({
+        initial: null,
+        clicked: false,
+        menuName: "Menu.",
+      });
+
+      document.body.style.overflowY = "scroll";
+    };
+
     themeChanger();
+
+    router.events.on("routeChangeStart", exit);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      router.events.off("routeChangeStart", exit);
+    };
   }, []);
 
   const changeTheme = (): void => {
@@ -50,10 +75,43 @@ const Navbar: FC = () => {
 
   const mouseOff = () => setHover(false);
 
-  const handleInnerLinks = (href: string, e: any) => {
-    e.preventDefault();
+  const handleMenu = () => {
+    disableMenuButton();
 
-    router.push(href);
+    if (open.initial === false) {
+      setOpen({
+        initial: null,
+        clicked: true,
+        menuName: "close.",
+      });
+
+      document.body.style.overflowY = "hidden";
+    } else if (open.clicked === true) {
+      setOpen({
+        initial: null,
+        clicked: !open.clicked,
+        menuName: "menu.",
+      });
+
+      document.body.style.overflowY = "scroll";
+    } else if (open.clicked === false) {
+      setOpen({
+        initial: null,
+        clicked: !open.clicked,
+        menuName: "close.",
+      });
+
+      document.body.style.overflowY = "hidden";
+    }
+  };
+
+  //   determine if our menu button should be disabled
+  const disableMenuButton = () => {
+    setDisable(!disable);
+
+    setTimeout(() => {
+      setDisable(false);
+    }, 1200);
   };
 
   return (
@@ -74,9 +132,7 @@ const Navbar: FC = () => {
         </Link>
       </motion.span>
 
-      <div className={styles.btn_menu}>menu.</div>
-
-      <motion.ul
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -84,24 +140,16 @@ const Navbar: FC = () => {
           delay: 0.2,
         }}
       >
-        <div className={styles.close_btn}>close.</div>
-
-        <li>
-          <Link href="/">
-            <a>home.</a>
-          </Link>
-        </li>
-
-        <li>
-          <Link href="/posts">
-            <a>posts.</a>
-          </Link>
-        </li>
-
-        <button id={styles.theme} onClick={changeTheme}>
-          {theme}
+        <button
+          disabled={disable}
+          className={styles.btn_menu}
+          onClick={handleMenu}
+        >
+          {open.menuName}
         </button>
-      </motion.ul>
+
+        <Hamburguer state={open} />
+      </motion.div>
     </nav>
   );
 };

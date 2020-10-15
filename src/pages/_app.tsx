@@ -2,7 +2,10 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import "../styles/globals.scss";
 import "markdown/styles.scss";
+
 import useWindowSize from "hooks/useWindowSize";
+
+import Navbar from "@Components/Navbar";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -79,6 +82,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="app" ref={app}>
+      <Navbar />
+
       <div className="scroll" ref={scrollContainer}>
         <Component {...pageProps} />
       </div>
