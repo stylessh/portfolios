@@ -60,14 +60,14 @@
 
             a {
               position: relative;
-              color: var(--maincolor);
+              color: var(--secondarycolor);
               text-decoration: none;
               font-weight: 700;
 
               transition: all 0.3s ease-in-out;
 
               &:hover {
-                color: var(--secondarycolor);
+                color: var(--maincolor);
               }
             }
           }
@@ -86,6 +86,10 @@
             color: var(--secondarycolor);
             font-size: 0.9em;
           }
+        }
+
+        #theme {
+          cursor: pointer;
         }
       }
     }

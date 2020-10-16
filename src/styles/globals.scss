@@ -4,6 +4,9 @@
 // variables
 @import "./components/variables";
 
+// mixins
+@import "./components/mixins";
+
 // general styles
 
 * {
@@ -22,6 +25,15 @@ body {
   overscroll-behavior-y: none;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--mainbackground);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--maincolor);
+}
+
 .app {
   position: fixed;
   top: 0;
@@ -31,6 +43,3 @@ body {
 
   overflow: hidden;
 }
-
-// mixins
-@import "./components/mixins";

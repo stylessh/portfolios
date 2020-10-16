@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import {
@@ -18,10 +18,12 @@ const Hamburger = ({ state }) => {
   let revealMenuBackground = useRef(null);
   let line1 = useRef(null);
   let line2 = useRef(null);
-  let line3 = useRef(null);
   let info = useRef(null);
 
+  const [theme, setTheme] = useState<string>("");
+
   useEffect(() => {
+    themeChanger();
     if (state.clicked === false) {
       // close menu
 
@@ -48,13 +50,33 @@ const Hamburger = ({ state }) => {
       );
 
       fadeInUp(info.current as any);
-      staggerText(
-        line1.current as any,
-        line2.current as any,
-        line3.current as any
-      );
+      staggerText(line1.current as any, line2.current as any);
     }
   }, [state]);
+
+  const changeTheme = (): void => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("dark-mode", "true");
+      themeChanger();
+    } else {
+      localStorage.setItem("dark-mode", "false");
+      themeChanger();
+    }
+  };
+
+  const themeChanger = (): void => {
+    if (localStorage.getItem("dark-mode") === "true") {
+      document.body.classList.add("dark");
+
+      setTheme("dark.");
+    } else {
+      document.body.classList.remove("dark");
+
+      setTheme("light.");
+    }
+  };
 
   return (
     <div className={styles.hamburguer_menu} ref={menu}>
@@ -67,33 +89,31 @@ const Hamburger = ({ state }) => {
           <div className={styles.menu_links}>
             <nav>
               <ul>
-                <li ref={line1}>
+                <li>
                   <Link href="/">
-                    <a>Home</a>
+                    <a ref={line1}>Home</a>
                   </Link>
                 </li>
-                <li ref={line2}>
+                <li>
                   <Link href="/posts">
-                    <a>Posts</a>
+                    <a ref={line2}>Posts</a>
                   </Link>
-                </li>
-                <li ref={line3}>
-                  <Link href="/contact-us">Contact Us</Link>
                 </li>
               </ul>
             </nav>
 
             <div className={styles.info} ref={info}>
-              <h3>Our Promise</h3>
+              <h3>Hey, you!</h3>
 
               <p>
                 It is a long established fact that a reader will be distracted
                 by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like readable English.
               </p>
             </div>
+
+            <span id={styles.theme} onClick={changeTheme}>
+              {theme}
+            </span>
           </div>
         </div>
       </div>
