@@ -1,19 +1,19 @@
-import styles from "@Styles/components/About.module.scss";
-import { FC, useRef } from "react";
-
+import { FC, useRef, useEffect } from "react";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const transition = {
-  duration: 0.5,
-  delay: 0.05,
+  duration: 0.8,
   ease: [0.25, 1, 0.5, 1],
 };
+
+import styles from "@Styles/components/About.module.scss";
 
 const HomeAbout: FC = () => {
   let about = useRef(null);
 
   const { scrollYProgress } = useViewportScroll();
   const yPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -50, -100]);
+  const xPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -30, -80]);
 
   return (
     <>
@@ -28,39 +28,57 @@ const HomeAbout: FC = () => {
                 </motion.h2>
               </div>
 
-              <div className={`${styles.line} wow fadeInUp`}></div>
+              <div className={styles.line}></div>
             </div>
 
             <div className={styles.me}>
-              <p className="fadeIn">Hey There! I'm Alan, a web developer.</p>
+              <div className={styles.mask}>
+                <p data-aos="fade-up" data-aos-delay="300">
+                  Hey There! I'm Alan, a web developer.
+                </p>
+              </div>
 
-              <p className="fadeIn">
-                I enjoy creating things that live on the internet, whether that
-                be websites, applications, etc.
-              </p>
+              <div className={styles.mask}>
+                <p data-aos="fade-up" data-aos-delay="400">
+                  I enjoy creating things that live on the internet, whether
+                  that be websites, applications, etc.
+                </p>
+              </div>
 
-              <p className="fadeIn">
-                I started to program at 14 years old! Now I'm 16, and i have
-                created many cool stuff. You can see some of them in my
-                <a href="https://github.com/stylessh" target="_blank">
-                  github
-                </a>
-                , hope see you in there!
-              </p>
+              <div className={styles.mask}>
+                <p data-aos="fade-up" data-aos-delay="500">
+                  I started to program at 14 years old! Now I'm 16, and i have
+                  created many cool stuff. You can see some of them in my
+                  <a href="https://github.com/stylessh" target="_blank">
+                    github
+                  </a>
+                  , hope see you in there!
+                </p>
+              </div>
             </div>
 
             <div className={styles.technologies}>
-              <p className="fadeIn">
-                Here are a few technologies I've been working with recently:
-              </p>
+              <div className={styles.mask}>
+                <p data-aos="fade-up" data-aos-delay="600">
+                  Here are a few technologies I've been working with recently:
+                </p>
+              </div>
 
               <ul className={styles.list}>
-                <div className={`${styles.left} wow fadeIn`}>
+                <div
+                  className={styles.left}
+                  data-aos="fade-in"
+                  data-aos-delay="800"
+                >
                   <li>Javascript (ES6+)</li>
                   <li>React.js</li>
                   <li>Node.js</li>
                 </div>
-                <div className={`${styles.right} wow fadeIn`}>
+                <div
+                  className={styles.right}
+                  data-aos="fade-in"
+                  data-aos-delay="900"
+                >
                   <li>HTML / SCSS</li>
                   <li>MongoDB</li>
                   <li>Python</li>
@@ -70,7 +88,13 @@ const HomeAbout: FC = () => {
           </article>
 
           <div className={styles.image}>
-            <img className="fadeIn" src="/img/alt-me.jpg" alt="Me" />
+            <motion.img
+              transition={transition}
+              style={{ x: xPosAnim }}
+              className="fadeIn"
+              src="/img/alt-me.jpg"
+              alt="Me"
+            />
           </div>
         </div>
       </section>

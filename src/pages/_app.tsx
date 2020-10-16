@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
+import AOS from "aos";
 
 import "@Styles/spinner.scss";
 import "../styles/globals.scss";
 import "markdown/styles.scss";
+import "aos/dist/aos.css";
 
 import useWindowSize from "hooks/useWindowSize";
 import isMobile from "utils/isMobile";
@@ -32,6 +34,12 @@ function MyApp({ Component, pageProps }) {
     rounded: 0,
   };
 
+  useEffect(() => {
+    AOS.init({
+      mirror: true,
+    });
+  }, []);
+
   //set the height of the body.
   useEffect(() => {
     if (!isMobile) setBodyHeight();
@@ -50,6 +58,8 @@ function MyApp({ Component, pageProps }) {
 
       Router.events.on("routeChangeComplete", skew);
 
+      // If the component is unmounted, unsubscribe
+      // from the event with the `off` method:
       return () => {
         Router.events.off("routeChangeComplete", skew);
       };
@@ -59,9 +69,6 @@ function MyApp({ Component, pageProps }) {
 
       appContainer.style.position = "static";
     }
-
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
   }, []);
 
   //Set the height of the body to the height of the scrolling div
