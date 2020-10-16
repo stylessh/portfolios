@@ -15,29 +15,6 @@
 
   z-index: 10;
 
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    background: var(--mainbackground);
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
-    height: 0;
-
-    z-index: -1;
-
-    transition: all 0.2s ease-in-out;
-  }
-
-  &.hover {
-    &::before {
-      height: 100%;
-    }
-  }
-
   &.hide {
     top: -200px;
   }
