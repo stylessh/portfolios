@@ -30,10 +30,10 @@
   .info {
     .mask {
       overflow: hidden;
-    }
 
-    p:not(:first-child) {
-      margin: 15px 0;
+      &:not(:first-child) {
+        margin: 15px 0;
+      }
     }
 
     h2 {
@@ -92,6 +92,7 @@
     img {
       display: block;
       margin: 0 auto;
+      filter: grayscale(1);
       width: 400px;
       box-shadow: 5px 10px 20px rgba(1, 1, 1, 0.1);
     }

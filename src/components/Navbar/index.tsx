@@ -22,9 +22,6 @@ const Navbar: FC = () => {
 
   const [disable, setDisable] = useState(false);
 
-  const [theme, setTheme] = useState<string>("");
-  const [hover, setHover] = useState<boolean>(false);
-
   useEffect(() => {
     const exit = () => {
       setOpen({
@@ -36,8 +33,6 @@ const Navbar: FC = () => {
       document.body.style.overflowY = "scroll";
     };
 
-    themeChanger();
-
     router.events.on("routeChangeStart", exit);
 
     // If the component is unmounted, unsubscribe
@@ -46,34 +41,6 @@ const Navbar: FC = () => {
       router.events.off("routeChangeStart", exit);
     };
   }, []);
-
-  const changeTheme = (): void => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      localStorage.setItem("dark-mode", "true");
-      themeChanger();
-    } else {
-      localStorage.setItem("dark-mode", "false");
-      themeChanger();
-    }
-  };
-
-  const themeChanger = (): void => {
-    if (localStorage.getItem("dark-mode") === "true") {
-      document.body.classList.add("dark");
-
-      setTheme("dark.");
-    } else {
-      document.body.classList.remove("dark");
-
-      setTheme("light.");
-    }
-  };
-
-  const mouseOn = () => setHover(true);
-
-  const mouseOff = () => setHover(false);
 
   const handleMenu = () => {
     disableMenuButton();
@@ -115,12 +82,7 @@ const Navbar: FC = () => {
   };
 
   return (
-    <nav
-      className={`${styles.navbar} ${hover ? `${styles.hover}` : ""}`}
-      ref={navbar}
-      onMouseEnter={mouseOn}
-      onMouseLeave={mouseOff}
-    >
+    <nav className={styles.navbar} ref={navbar}>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -27,12 +27,16 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
   }, []);
 
   const loadMorePost = async () => {
-    const newPosts: IPost[] = await getPosts(posts.length);
+    if (postsLength > posts.length) {
+      const newPosts: IPost[] = await getPosts(posts.length);
 
-    setPosts([...posts, ...newPosts]);
+      setPosts([...posts, ...newPosts]);
 
-    // pushing a query to refresh body height in app
-    router.push("?loading_more=true");
+      // pushing a query to refresh body height in app
+      router.push("?loading_more=true");
+    } else {
+      setHasMore(false);
+    }
   };
 
   return (
@@ -61,14 +65,15 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
             ))
           : null}
 
-        <span
-          className={`${styles.load_more} ${
-            hasMore ? `${styles.has_more}` : ""
-          }`}
-          onMouseEnter={loadMorePost}
-        >
-          hover here to load more posts.
-        </span>
+        {hasMore ? (
+          <span className={styles.tip} onMouseEnter={loadMorePost}>
+            hover here to load more posts.
+          </span>
+        ) : (
+          <span className={styles.tip}>
+            Yay, you've seen all the posts here!
+          </span>
+        )}
       </main>
     </Layout>
   );

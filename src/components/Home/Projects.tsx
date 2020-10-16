@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import styles from "@Styles/components/Projects.module.scss";
@@ -9,7 +9,7 @@ type ProjectsType = {
   projects: IProject[];
 };
 
-const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
+const transition = { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] };
 
 const HomeProjects: FC<ProjectsType> = ({ projects }) => {
   return (
@@ -18,7 +18,7 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
       <section className={styles.projects}>
         <div className={styles.header}>
           <h2 className="wow fadeInUp">Selected projects.</h2>
-          <div className={`${styles.line} wow fadeInUp`}></div>
+          <div className={styles.line}></div>
         </div>
 
         {projects.map((project: IProject, i: number) => {
@@ -29,19 +29,32 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 key={project.id}
               >
                 <div className={styles.info}>
-                  <p className={`${styles.counter} wow fadeInUp`}>{`0${
-                    i + 1
-                  } / 0${projects.length}`}</p>
-                  <h2 className={`${styles.project_name} wow fadeInUp`}>
+                  <p className={`${styles.counter}`}>{`0${i + 1} / 0${
+                    projects.length
+                  }`}</p>
+
+                  <h2
+                    className={`${styles.project_name} `}
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
                     {project.name}
                   </h2>
 
-                  <p className={`${styles.role} wow fadeInUp`}>
+                  <p
+                    className={`${styles.role}`}
+                    data-aos="fade-up"
+                    data-aos-delay="350"
+                  >
                     <span>Role:</span>
                     {project.role.map((r) => `${r}. `)}
                   </p>
 
-                  <p className={styles.technologies}>
+                  <p
+                    className={styles.technologies}
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                  >
                     <span>Technologies:</span>
                     {project.technologies.map((t) => `${t}. `)}
                   </p>
@@ -100,16 +113,29 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                   <p className={`${styles.counter} wow fadeInUp`}>{`0${
                     i + 1
                   } / 0${projects.length}`}</p>
-                  <h2 className={`${styles.project_name} wow fadeInUp`}>
+
+                  <h2
+                    className={`${styles.project_name} wow fadeInUp`}
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
                     {project.name}
                   </h2>
 
-                  <p className={`${styles.role} wow fadeInUp`}>
+                  <p
+                    className={`${styles.role} wow fadeInUp`}
+                    data-aos="fade-up"
+                    data-aos-delay="350"
+                  >
                     <span>Role:</span>
                     {project.role.map((r) => `${r}. `)}
                   </p>
 
-                  <p className={styles.technologies}>
+                  <p
+                    className={styles.technologies}
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                  >
                     <span>Technologies:</span>
                     {project.technologies.map((t) => `${t}. `)}
                   </p>

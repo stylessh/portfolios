@@ -1,15 +1,24 @@
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import Router from "next/router";
+import NProgress from "nprogress";
+import AOS from "aos";
+
+import "@Styles/spinner.scss";
 import "../styles/globals.scss";
 import "markdown/styles.scss";
+import "aos/dist/aos.css";
 
 import useWindowSize from "hooks/useWindowSize";
+import isMobile from "utils/isMobile";
 
 import Navbar from "@Components/Navbar";
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+// loading
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
+function MyApp({ Component, pageProps }) {
   //Hook to grab window size
   const size = useWindowSize();
 
@@ -25,9 +34,15 @@ function MyApp({ Component, pageProps }) {
     rounded: 0,
   };
 
+  useEffect(() => {
+    AOS.init({
+      mirror: true,
+    });
+  }, []);
+
   //set the height of the body.
   useEffect(() => {
-    setBodyHeight();
+    if (!isMobile) setBodyHeight();
   }, [size.height]);
 
   useEffect(() => {
@@ -35,18 +50,25 @@ function MyApp({ Component, pageProps }) {
       setTimeout(() => {
         setBodyHeight();
         requestAnimationFrame(() => skewScrolling());
-      }, 100);
+      }, 200);
     };
 
-    skew();
+    if (!isMobile()) {
+      skew();
 
-    router.events.on("routeChangeComplete", skew);
+      Router.events.on("routeChangeComplete", skew);
 
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
-    return () => {
-      router.events.off("routeChangeComplete", skew);
-    };
+      // If the component is unmounted, unsubscribe
+      // from the event with the `off` method:
+      return () => {
+        Router.events.off("routeChangeComplete", skew);
+      };
+    } else {
+      // if is mobile, set normal scroll
+      const appContainer = app.current as any;
+
+      appContainer.style.position = "static";
+    }
   }, []);
 
   //Set the height of the body to the height of the scrolling div

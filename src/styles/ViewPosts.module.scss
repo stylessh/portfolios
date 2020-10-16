@@ -2,6 +2,7 @@
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 4em;
 
   display: flex;
   flex-direction: column;
@@ -44,9 +45,7 @@
     }
   }
 
-  .load_more {
-    display: none;
-
+  .tip {
     cursor: crosshair;
     text-align: center;
     padding-bottom: 2em;
@@ -71,5 +70,17 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .posts {
+    .post {
+      .postHeader {
+        .postTitle {
+          font-size: 2em;
+        }
+      }
+    }
   }
 }

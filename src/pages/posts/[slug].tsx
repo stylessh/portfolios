@@ -34,29 +34,31 @@ const Post: FC = () => {
       {post.title ? (
         <>
           <Head title={post.title} />
-          <section className={styles.post} key={post.id}>
-            <article className={styles.postHeader}>
-              <h2 className={styles.postTitle}>{post.title}</h2>
+          <div className={styles.container}>
+            <section className={styles.post} key={post.id}>
+              <article className={styles.postHeader}>
+                <h2 className={styles.postTitle}>{post.title}</h2>
 
-              <h3 className={styles.date}>
-                {moment(post.published_at).format("LLL")}
-              </h3>
+                <h3 className={styles.date}>
+                  {moment(post.published_at).format("LLL")}
+                </h3>
 
-              <ul className={styles.tags}>
-                {post.tags.map((tag, i: number) => (
-                  <li key={i}>#{tag}</li>
-                ))}
-              </ul>
-            </article>
+                <ul className={styles.tags}>
+                  {post.tags.map((tag, i: number) => (
+                    <li key={i}>#{tag}</li>
+                  ))}
+                </ul>
+              </article>
 
-            <article className={`${styles.postBody} markdown-body`}>
-              <ReactMarkdown
-                source={post.content}
-                escapeHtml={false}
-                renderers={{ code: CodeBlock }}
-              />
-            </article>
-          </section>
+              <article className={`${styles.postBody} markdown-body`}>
+                <ReactMarkdown
+                  source={post.content}
+                  escapeHtml={false}
+                  renderers={{ code: CodeBlock }}
+                />
+              </article>
+            </section>
+          </div>
         </>
       ) : null}
     </Layout>
