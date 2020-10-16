@@ -9,12 +9,14 @@
   flex-direction: column;
 
   .header {
+    overflow: hidden;
     h3 {
       font-size: 3em;
     }
   }
 
   .info {
+    overflow: hidden;
     p {
       width: 50%;
       margin: 20px auto;
@@ -32,7 +34,7 @@
     border: 1px solid var(--secondarycolor);
 
     &:hover {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 }
