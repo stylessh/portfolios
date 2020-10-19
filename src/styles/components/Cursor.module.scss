@@ -1,0 +1,24 @@
+.cursor {
+  position: fixed;
+  z-index: 9999;
+
+  width: 4em;
+  height: 4em;
+  background: var(--maincolor);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+
+  mix-blend-mode: difference;
+
+  pointer-events: none;
+
+  transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s ease-in-out width, 0.2s ease-in-out height;
+}
+
+@media screen and (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
+}

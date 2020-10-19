@@ -9,9 +9,13 @@ const isMobile = () => {
     /Windows Phone/i,
   ];
 
-  return toMatch.some((toMatchItem) => {
-    return navigator.userAgent.match(toMatchItem);
-  });
+  if (typeof navigator !== "undefined") {
+    return toMatch.some((toMatchItem) => {
+      return navigator.userAgent.match(toMatchItem);
+    });
+  } else {
+    return {};
+  }
 };
 
 export default isMobile;

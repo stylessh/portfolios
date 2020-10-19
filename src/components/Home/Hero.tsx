@@ -10,6 +10,8 @@ const HomeHero: FC = () => {
 
   let title = useRef();
 
+  let header = useRef();
+
   useEffect(() => {
     reveal();
   }, []);
@@ -26,21 +28,19 @@ const HomeHero: FC = () => {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.header}>
+      <div className={styles.header} ref={header}>
         <article
           className={`${styles.secondary_img} ${styles.light}`}
           ref={first_image}
         >
-          <div className={styles.overlay}></div>
-          <img src="/img/light.png" alt="Light" />
+          <img src="/img/light.jpg" alt="Light" />
         </article>
 
         <article
           className={`${styles.main_img} ${styles.rose}`}
           ref={third_image}
         >
-          <div className={styles.overlay}></div>
-          <img src="/img/rose.png" alt="Rose" />
+          <img src="/img/rose.jpg" alt="Rose" />
         </article>
 
         <h1 className={styles.quote} ref={title}>
@@ -51,8 +51,7 @@ const HomeHero: FC = () => {
           className={`${styles.secondary_img} ${styles.water}`}
           ref={second_image}
         >
-          <div className={styles.overlay}></div>
-          <img src="/img/water.png" alt="Water" />
+          <img src="/img/water.jpg" alt="Water" />
         </article>
       </div>
     </section>
