@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from "react";
+import { FC, useRef } from "react";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const transition = {
@@ -13,7 +13,6 @@ const HomeAbout: FC = () => {
 
   const { scrollYProgress } = useViewportScroll();
   const yPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -50, -100]);
-  const xPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -30, -80]);
 
   return (
     <>
@@ -88,10 +87,10 @@ const HomeAbout: FC = () => {
           </article>
 
           <div className={styles.image}>
-            <motion.img
-              transition={transition}
-              style={{ x: xPosAnim }}
-              className="fadeIn"
+            <img
+              data-aos="fade-left"
+              data-aos-delay="400"
+              data-aos-duration="600"
               src="/img/alt-me.jpg"
               alt="Me"
             />

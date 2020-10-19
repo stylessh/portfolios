@@ -12,6 +12,7 @@ import useWindowSize from "hooks/useWindowSize";
 import isMobile from "utils/isMobile";
 
 import Navbar from "@Components/Navbar";
+import Cursor from "@Components/Cursor";
 
 // loading
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     AOS.init({
       mirror: true,
+      easing: 'ease-in-out-sine'
     });
   }, []);
 
@@ -104,6 +106,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="app" ref={app}>
+      <Cursor />
       <Navbar />
 
       <div className="scroll" ref={scrollContainer}>
