@@ -1,6 +1,5 @@
 import moment from "moment";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import Head from "@Components/Head";
 import Layout from "@Components/Layout";
@@ -17,8 +16,6 @@ type PostsProps = {
 };
 
 const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
-  const router = useRouter();
-
   const [posts, setPosts] = useState<IPost[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
@@ -31,9 +28,6 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
       const newPosts: IPost[] = await getPosts(posts.length);
 
       setPosts([...posts, ...newPosts]);
-
-      // pushing a query to refresh body height in app
-      router.push("?loading_more=true");
     } else {
       setHasMore(false);
     }
