@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Hamburguer from "@Components/Hamburguer";
 
 import styles from "@Styles/components/Navbar.module.scss";
+import { INavState } from "@Interfaces/Navbar";
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 
@@ -14,7 +15,7 @@ const Navbar: FC = () => {
 
   const router = useRouter();
 
-  const [open, setOpen] = useState({
+  const [open, setOpen] = useState<INavState>({
     initial: false,
     clicked: null,
     menuName: "menu.",
@@ -25,7 +26,7 @@ const Navbar: FC = () => {
   useEffect(() => {
     const exit = () => {
       setOpen({
-        initial: null,
+        initial: true,
         clicked: false,
         menuName: "Menu.",
       });
@@ -47,7 +48,7 @@ const Navbar: FC = () => {
 
     if (open.initial === false) {
       setOpen({
-        initial: null,
+        initial: true,
         clicked: true,
         menuName: "close.",
       });
@@ -55,15 +56,15 @@ const Navbar: FC = () => {
       document.body.style.overflowY = "hidden";
     } else if (open.clicked === true) {
       setOpen({
-        initial: null,
-        clicked: !open.clicked,
-        menuName: "menu.",
+        initial: false,
+        clicked: false,
+        menuName: "Menu.",
       });
 
       document.body.style.overflowY = "scroll";
     } else if (open.clicked === false) {
       setOpen({
-        initial: null,
+        initial: false,
         clicked: !open.clicked,
         menuName: "close.",
       });
