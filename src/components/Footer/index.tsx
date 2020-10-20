@@ -28,10 +28,7 @@ const Footer = () => {
         >
           <h3>follow me</h3>
           <div className={styles.icons}>
-            <a
-              href="https://www.instagram.com/lateegram/"
-              target="_blank"
-            >
+            <a href="https://www.instagram.com/lateegram/" target="_blank">
               <FaInstagram />
             </a>
             <a

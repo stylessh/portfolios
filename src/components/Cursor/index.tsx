@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 import styles from "@Styles/components/Cursor.module.scss";
 import gsap from "gsap";
@@ -21,6 +21,7 @@ const Cursor = () => {
       {
         duration: 0.016,
         repeat: -1,
+        ease: "power4.inOut",
         onRepeat: function () {
           posX += (mouseX - posX) / 9;
           posY += (mouseY - posY) / 9;
@@ -35,10 +36,12 @@ const Cursor = () => {
       }
     );
 
-    document.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+    const updatePos = (e: MouseEvent) => {
+      mouseX = e.pageX;
+      mouseY = e.pageY;
+    };
+
+    document.addEventListener("mousemove", updatePos);
   });
 
   return <div className={styles.cursor} ref={cursor}></div>;
