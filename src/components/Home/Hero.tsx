@@ -33,14 +33,14 @@ const HomeHero: FC = () => {
           className={`${styles.secondary_img} ${styles.light}`}
           ref={first_image}
         >
-          <img src="/img/light.jpg" alt="Light" />
+          <img src="/img/light.webp" alt="Light" />
         </article>
 
         <article
           className={`${styles.main_img} ${styles.rose}`}
           ref={third_image}
         >
-          <img src="/img/rose.jpg" alt="Rose" />
+          <img src="/img/rose.webp" alt="Rose" />
         </article>
 
         <h1 className={styles.quote} ref={title}>
@@ -51,7 +51,7 @@ const HomeHero: FC = () => {
           className={`${styles.secondary_img} ${styles.water}`}
           ref={second_image}
         >
-          <img src="/img/water.jpg" alt="Water" />
+          <img src="/img/water.webp" alt="Water" />
         </article>
       </div>
     </section>
