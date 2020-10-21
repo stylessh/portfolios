@@ -40,7 +40,7 @@ const Hamburger: FC<HamburguerProps> = ({ state }) => {
       );
     } else if (
       state.clicked === true ||
-      (state.clicked === true && state.initial === null)
+      (state.clicked === true && state.initial === false)
     ) {
       // open menu
 

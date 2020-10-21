@@ -17,7 +17,7 @@ const Navbar: FC = () => {
 
   const [open, setOpen] = useState<INavState>({
     initial: false,
-    clicked: null,
+    clicked: false,
     menuName: "menu.",
   });
 
