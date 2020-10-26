@@ -1,5 +1,6 @@
 import moment from "moment";
 import Link from "next/link";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Head from "@Components/Head";
 import Layout from "@Components/Layout";
@@ -17,57 +18,55 @@ type PostsProps = {
 
 const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
   const [posts, setPosts] = useState<IPost[]>([]);
-  const [hasMore, setHasMore] = useState<boolean>(true);
+  // const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
     setPosts(data);
   }, []);
 
   const loadMorePost = async () => {
-    if (postsLength > posts.length) {
-      const newPosts: IPost[] = await getPosts(posts.length);
+    const newPosts: IPost[] = await getPosts(posts.length);
 
-      setPosts([...posts, ...newPosts]);
-    } else {
-      setHasMore(false);
-    }
+    setPosts([...posts, ...newPosts]);
   };
 
   return (
     <Layout>
       <Head title="Posts" />
       <main className={styles.posts}>
-        {posts.length > 0
-          ? posts.map((post) => (
-              <section className={styles.post} key={post.id}>
-                <article className={styles.postHeader}>
-                  <Link href={`/posts/${post.slug}`}>
-                    <h2 className={styles.postTitle}>{post.title}</h2>
-                  </Link>
+        <InfiniteScroll
+          dataLength={postsLength}
+          hasMore={posts.length < postsLength}
+          next={loadMorePost}
+          loader={<p style={{ textAlign: "center" }}>Loading...</p>}
+          endMessage={
+            <p style={{ textAlign: "center" }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          {posts.length > 0
+            ? posts.map((post) => (
+                <section className={styles.post} key={post.id}>
+                  <article className={styles.postHeader}>
+                    <Link href={`/posts/${post.slug}`}>
+                      <h2 className={styles.postTitle}>{post.title}</h2>
+                    </Link>
 
-                  <h3 className={styles.date}>
-                    {moment(post.published_at).format("LLL")}
-                  </h3>
+                    <h3 className={styles.date}>
+                      {moment(post.published_at).format("LLL")}
+                    </h3>
 
-                  <ul className={styles.tags}>
-                    {post.tags.map((tag, i) => (
-                      <li key={i}>#{tag}</li>
-                    ))}
-                  </ul>
-                </article>
-              </section>
-            ))
-          : null}
-
-        {hasMore ? (
-          <span className={styles.tip} onMouseEnter={loadMorePost}>
-            hover here to load more posts.
-          </span>
-        ) : (
-          <span className={styles.tip}>
-            Yay, you've seen all the posts here!
-          </span>
-        )}
+                    <ul className={styles.tags}>
+                      {post.tags.map((tag, i) => (
+                        <li key={i}>#{tag}</li>
+                      ))}
+                    </ul>
+                  </article>
+                </section>
+              ))
+            : null}
+        </InfiniteScroll>
       </main>
     </Layout>
   );
