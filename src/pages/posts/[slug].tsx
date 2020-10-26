@@ -3,6 +3,8 @@ import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
 import { useRouter } from "next/router";
 
+import NProgress from "nprogress";
+
 import CodeBlock from "@Components/CodeBlock";
 import Layout from "@Components/Layout";
 import Head from "@Components/Head";
@@ -18,6 +20,7 @@ const Post: FC = () => {
   const { slug } = router.query;
 
   const [post, setPost] = useState<IPost>({});
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -26,8 +29,14 @@ const Post: FC = () => {
       setPost(data);
     };
 
+    setLoading(true);
+
     getData();
+
+    setLoading(false);
   }, []);
+
+  loading ? NProgress.start() : null;
 
   return (
     <Layout>
