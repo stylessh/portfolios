@@ -110,6 +110,10 @@
     .work {
       .work_image {
         grid-area: image;
+
+        img {
+          height: auto;
+        }
       }
 
       .info {

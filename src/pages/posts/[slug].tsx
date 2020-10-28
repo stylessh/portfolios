@@ -20,7 +20,7 @@ const Post: FC = () => {
   const { slug } = router.query;
 
   const [post, setPost] = useState<IPost>({});
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
