@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
 import AOS from "aos";
@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 
 import Navbar from "@Components/Navbar";
 import Cursor from "@Components/Cursor";
+import isMobile from "@Utils/isMobile";
 
 // loading
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -17,9 +18,6 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  // Ref for parent div and scrolling div
-  const app = useRef();
-
   useEffect(() => {
     AOS.init({
       mirror: true,
@@ -30,14 +28,16 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const luxy = require("luxy.js");
 
-    luxy.init({
-      wrapper: ".app",
-      wrapperSpeed: 0.05,
-    });
+    if (!isMobile()) {
+      luxy.init({
+        wrapper: ".app",
+        wrapperSpeed: 0.02,
+      });
+    }
   }, []);
 
   return (
-    <div className="app" ref={app}>
+    <div className="app">
       <Cursor />
       <Navbar />
 

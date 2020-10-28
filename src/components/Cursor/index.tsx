@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import isMobile from "@Utils/isMobile";
 
 import styles from "@Styles/components/Cursor.module.scss";
 import gsap from "gsap";
@@ -41,7 +42,9 @@ const Cursor = () => {
       mouseY = e.pageY;
     };
 
-    document.addEventListener("mousemove", updatePos);
+    if (!isMobile()) {
+      document.addEventListener("mousemove", updatePos);
+    }
   });
 
   return <div className={styles.cursor} ref={cursor}></div>;
