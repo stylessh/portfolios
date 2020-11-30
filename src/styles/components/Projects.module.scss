@@ -41,6 +41,7 @@
 
       img {
         width: 100%;
+        height: 400px;
         vertical-align: top;
       }
     }
@@ -109,6 +110,10 @@
     .work {
       .work_image {
         grid-area: image;
+
+        img {
+          height: auto;
+        }
       }
 
       .info {

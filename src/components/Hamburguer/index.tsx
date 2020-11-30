@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+
+import { INavState } from '@Interfaces/Navbar'
 
 import {
   closeMenu,
@@ -11,7 +13,11 @@ import {
 
 import styles from "@Styles/components/Hamburguer.module.scss";
 
-const Hamburger = ({ state }) => {
+type HamburguerProps = {
+  state: INavState;
+}
+
+const Hamburger: FC<HamburguerProps> = ({ state }) => {
   // Vars for dom elements
   let menu = useRef(null);
   let revealMenu = useRef(null);
@@ -34,7 +40,7 @@ const Hamburger = ({ state }) => {
       );
     } else if (
       state.clicked === true ||
-      (state.clicked === true && state.initial === null)
+      (state.clicked === true && state.initial === false)
     ) {
       // open menu
 
