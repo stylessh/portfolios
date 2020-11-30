@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="app">
-      <Cursor />
+      {/* <Cursor /> */}
       <Navbar />
 
       <Component {...pageProps} />

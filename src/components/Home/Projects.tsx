@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { motion } from "framer-motion";
 
 import styles from "@Styles/components/Projects.module.scss";
@@ -63,6 +63,7 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 <a
                   href={project.url}
                   target="_blank"
+                  rel="noreferrer"
                   className={styles.work_image}
                 >
                   <motion.img
@@ -91,6 +92,7 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
                 <a
                   href={project.url}
                   target="_blank"
+                  rel="noreferrer"
                   className={styles.work_image}
                 >
                   <motion.img
