@@ -91,8 +91,8 @@ const HomeAbout: FC = () => {
               data-aos="fade-left"
               data-aos-delay="400"
               data-aos-duration="600"
-              src="/img/alt-me.jpg"
-              alt="Me"
+              src="/img/me.jpeg"
+              alt="stylessh"
             />
           </div>
         </div>
