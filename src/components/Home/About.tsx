@@ -1,18 +1,8 @@
 import { FC, useRef } from "react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
-
-const transition = {
-  duration: 0.8,
-  ease: [0.25, 1, 0.5, 1],
-};
-
 import styles from "@Styles/components/About.module.scss";
 
 const HomeAbout: FC = () => {
   let about = useRef(null);
-
-  const { scrollYProgress } = useViewportScroll();
-  const yPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -50, -100]);
 
   return (
     <>
@@ -22,12 +12,10 @@ const HomeAbout: FC = () => {
           <article className={styles.info}>
             <div className={styles.header}>
               <div className={styles.mask}>
-                <motion.h2 style={{ y: yPosAnim }} transition={transition}>
-                  About me. <br /> About me.
-                </motion.h2>
+                <h2 data-aos="fade-up">About me.</h2>
               </div>
 
-              <div className={styles.line}></div>
+              <div className={styles.line} data-aos="fade-up"></div>
             </div>
 
             <div className={styles.me}>
@@ -48,7 +36,11 @@ const HomeAbout: FC = () => {
                 <p data-aos="fade-up" data-aos-delay="500">
                   I started to program at 14 years old! Now I'm 16, and i have
                   created many cool stuff. You can see some of them in my
-                  <a href="https://github.com/stylessh" target="_blank">
+                  <a
+                    href="https://github.com/stylessh"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
                     github
                   </a>
                   , hope see you in there!
@@ -63,8 +55,8 @@ const HomeAbout: FC = () => {
                 </p>
               </div>
 
-              <ul className={styles.list}>
-                <div
+              <div className={styles.list}>
+                <ul
                   className={styles.left}
                   data-aos="fade-in"
                   data-aos-delay="800"
@@ -72,8 +64,8 @@ const HomeAbout: FC = () => {
                   <li>Javascript (ES6+)</li>
                   <li>React.js</li>
                   <li>Node.js</li>
-                </div>
-                <div
+                </ul>
+                <ul
                   className={styles.right}
                   data-aos="fade-in"
                   data-aos-delay="900"
@@ -81,8 +73,8 @@ const HomeAbout: FC = () => {
                   <li>HTML / SCSS</li>
                   <li>MongoDB</li>
                   <li>Python</li>
-                </div>
-              </ul>
+                </ul>
+              </div>
             </div>
           </article>
 
@@ -91,7 +83,7 @@ const HomeAbout: FC = () => {
               data-aos="fade-left"
               data-aos-delay="400"
               data-aos-duration="600"
-              src="/img/me.jpeg"
+              src="/img/me.webp"
               alt="stylessh"
             />
           </div>
