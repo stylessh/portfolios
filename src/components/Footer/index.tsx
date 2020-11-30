@@ -28,17 +28,26 @@ const Footer = () => {
         >
           <h3>follow me</h3>
           <div className={styles.icons}>
-            <a href="https://www.instagram.com/lateegram/" target="_blank">
+            <a
+              href="https://www.instagram.com/lateegram/"
+              rel="noreferrer"
+              target="_blank"
+            >
               <FaInstagram />
             </a>
             <a
               href="https://twitter.com/stylesshDev"
+              rel="noreferrer"
               data-aos-offset="50"
               target="_blank"
             >
               <FaTwitter />
             </a>
-            <a href="https://www.facebook.com/danielStrecci">
+            <a
+              href="https://www.facebook.com/danielStrecci"
+              rel="noreferrer"
+              target="_blank"
+            >
               <FaFacebook />
             </a>
           </div>
