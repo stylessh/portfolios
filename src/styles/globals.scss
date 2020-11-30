@@ -18,9 +18,13 @@
   outline: none;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--mainbackground);
-  overflow-x: hidden;
   font-size: 16px;
   overscroll-behavior-y: none;
 }
@@ -33,4 +37,3 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--maincolor);
 }
-
