@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaYoutube, FaFacebook, FaTwitter } from "react-icons/fa";
 import styles from "@Styles/components/Footer.module.scss";
 
 const Footer = () => {
@@ -17,7 +17,7 @@ const Footer = () => {
           data-aos-delay="400"
         >
           <h3>connect with me</h3>
-          <p>ig @lateegram</p>
+          <p>tw @stylesshDev</p>
         </div>
 
         <div
@@ -29,11 +29,11 @@ const Footer = () => {
           <h3>follow me</h3>
           <div className={styles.icons}>
             <a
-              href="https://www.instagram.com/lateegram/"
+              href="https://www.youtube.com/channel/UCF0tuBAtBp2MUP1Iup4p1kQ"
               rel="noreferrer"
               target="_blank"
             >
-              <FaInstagram />
+              <FaYoutube />
             </a>
             <a
               href="https://twitter.com/stylesshDev"
@@ -42,13 +42,6 @@ const Footer = () => {
               target="_blank"
             >
               <FaTwitter />
-            </a>
-            <a
-              href="https://www.facebook.com/danielStrecci"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <FaFacebook />
             </a>
           </div>
         </div>
