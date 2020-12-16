@@ -1,0 +1,131 @@
+@import "./mixins";
+
+.projects {
+  width: 90%;
+
+  margin: 0 auto;
+
+  .header {
+    margin: 60px 0;
+    text-align: center;
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
+
+    .line {
+      @include line;
+      margin: auto;
+    }
+  }
+
+  .work {
+    color: var(--maincolor);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 4em;
+
+    text-decoration: none;
+
+    & * {
+      transition: all 0.2s ease-in;
+    }
+
+    &.active {
+      .left {
+        display: flex;
+        align-items: center;
+
+        .counter {
+          opacity: 1;
+        }
+
+        .work_title {
+          margin-left: 1em;
+          transform: translateX(0);
+
+          transition-delay: 0ms;
+        }
+      }
+
+      .work_image {
+        max-width: 25vw;
+        height: auto;
+
+        opacity: 1;
+        transform: translateX(0);
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .counter {
+        opacity: 0;
+      }
+
+      .work_title {
+        margin-left: 0;
+        transform: translateX(-2em);
+      }
+    }
+
+    .work_image {
+      max-width: 25vw;
+      height: auto;
+
+      opacity: 0;
+      transform: translateX(-2em);
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects {
+    .work {
+      flex-direction: column;
+
+      .left {
+        flex-direction: column;
+
+        .counter {
+          opacity: 1;
+        }
+
+        .work_title {
+          margin: 1em 0;
+
+          transform: translateX(0);
+        }
+      }
+
+      .work_image {
+        opacity: 1;
+
+        max-width: 100%;
+        transform: translateX(0);
+
+        img {
+          height: auto;
+        }
+      }
+
+      .role {
+        margin: 0.5em 0;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-import { INavState } from '@Interfaces/Navbar'
+import { INavState } from "@Interfaces/Navbar";
 
 import {
   closeMenu,
@@ -11,11 +11,9 @@ import {
   openMenu,
 } from "animations";
 
-import styles from "@Styles/components/Hamburguer.module.scss";
-
 type HamburguerProps = {
   state: INavState;
-}
+};
 
 const Hamburger: FC<HamburguerProps> = ({ state }) => {
   // Vars for dom elements
@@ -85,14 +83,11 @@ const Hamburger: FC<HamburguerProps> = ({ state }) => {
   };
 
   return (
-    <div className={styles.hamburguer_menu} ref={menu}>
-      <div
-        className={styles.menu_second_background}
-        ref={revealMenuBackground}
-      ></div>
-      <div className={styles.menu_layer} ref={revealMenu}>
-        <div className={styles.menu_container}>
-          <div className={styles.menu_links}>
+    <div className="hamburguer_menu" ref={menu}>
+      <div className="menu_second_background" ref={revealMenuBackground}></div>
+      <div className="menu_layer" ref={revealMenu}>
+        <div className="menu_container">
+          <div className="menu_links">
             <nav>
               <ul>
                 <li>
@@ -108,7 +103,7 @@ const Hamburger: FC<HamburguerProps> = ({ state }) => {
               </ul>
             </nav>
 
-            <div className={styles.info} ref={info}>
+            <div className="info" ref={info}>
               <h3>Hey, you!</h3>
 
               <p>
@@ -117,7 +112,7 @@ const Hamburger: FC<HamburguerProps> = ({ state }) => {
               </p>
             </div>
 
-            <span id={styles.theme} onClick={changeTheme}>
+            <span id="theme" onClick={changeTheme}>
               {theme}
             </span>
           </div>

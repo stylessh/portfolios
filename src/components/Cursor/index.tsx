@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import isMobile from "@Utils/isMobile";
 
-import styles from "@Styles/components/Cursor.module.scss";
 import gsap from "gsap";
 
 const Cursor = () => {
@@ -47,7 +46,7 @@ const Cursor = () => {
     }
   });
 
-  return <div className={styles.cursor} ref={cursor}></div>;
+  return <div className="cursor" ref={cursor}></div>;
 };
 
 export default Cursor;

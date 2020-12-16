@@ -1,15 +1,14 @@
-import { FaYoutube, FaFacebook, FaTwitter } from "react-icons/fa";
-import styles from "@Styles/components/Footer.module.scss";
+import { FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <p className={styles.text} data-aos="fade-right" data-aos-delay="300">
+    <footer className="footer">
+      <p className="text" data-aos="fade-right" data-aos-delay="300">
         Got an interesting project? I can help you.
       </p>
-      <div className={styles.line}></div>
+      <div className="line"></div>
 
-      <div className={styles.grid_3}>
+      <div className="grid_3">
         <div
           className="ig"
           data-aos="fade-in"
@@ -27,7 +26,7 @@ const Footer = () => {
           data-aos-delay="450"
         >
           <h3>follow me</h3>
-          <div className={styles.icons}>
+          <div className="icons">
             <a
               href="https://www.youtube.com/channel/UCF0tuBAtBp2MUP1Iup4p1kQ"
               rel="noreferrer"

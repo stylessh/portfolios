@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 import Hamburguer from "@Components/Hamburguer";
 
-import styles from "@Styles/components/Navbar.module.scss";
 import { INavState } from "@Interfaces/Navbar";
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -83,12 +82,12 @@ const Navbar: FC = () => {
   };
 
   return (
-    <nav className={styles.navbar} ref={navbar}>
+    <nav className="navbar" ref={navbar}>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={transition}
-        className={styles.brand}
+        className="brand"
       >
         <Link href="/">
           <a data-scroll>stylessh</a>
@@ -103,11 +102,7 @@ const Navbar: FC = () => {
           delay: 0.2,
         }}
       >
-        <button
-          disabled={disable}
-          className={styles.btn_menu}
-          onClick={handleMenu}
-        >
+        <button disabled={disable} className="btn_menu" onClick={handleMenu}>
           {open.menuName}
         </button>
 
