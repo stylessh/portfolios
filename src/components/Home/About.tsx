@@ -20,12 +20,6 @@ const HomeAbout: FC = () => {
 
             <div className={styles.me}>
               <div className={styles.mask}>
-                <p data-aos="fade-up" data-aos-delay="300">
-                  Hey There! I'm Alan, a web developer.
-                </p>
-              </div>
-
-              <div className={styles.mask}>
                 <p data-aos="fade-up" data-aos-delay="400">
                   I enjoy creating things that live on the internet, whether
                   that be websites, applications, etc.
@@ -34,8 +28,7 @@ const HomeAbout: FC = () => {
 
               <div className={styles.mask}>
                 <p data-aos="fade-up" data-aos-delay="500">
-                  I started to program at 14 years old! Now I'm 16, and i have
-                  created many cool stuff. You can see some of them in my
+                  I've created many cool stuff. You can see some of them in my
                   <a
                     href="https://github.com/stylessh"
                     rel="noreferrer"
@@ -70,8 +63,8 @@ const HomeAbout: FC = () => {
                   data-aos="fade-in"
                   data-aos-delay="900"
                 >
-                  <li>HTML / SCSS</li>
-                  <li>MongoDB</li>
+                  <li>Svelte</li>
+                  <li>Typescript</li>
                   <li>Python</li>
                 </ul>
               </div>

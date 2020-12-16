@@ -68,24 +68,10 @@ export const staggerText = (node1, node2) => {
   });
 };
 
-export const revealImage = (node1, node2, node3) => {
-  gsap.from([node1, node2, node3], {
-    duration: 3,
-    opacity: 0,
-    height: 0,
-    y: 50,
-    delay: 0.5,
-    ease: "power4.inOut",
-    stagger: {
-      amount: 0.8,
-    },
-  });
-};
-
 export const revealTitle = (node) => {
   gsap.from(node, {
     duration: 0.8,
-    delay: 4,
+    delay: 2,
     y: 25,
     opacity: 0,
     ease: "power4.inOut",
