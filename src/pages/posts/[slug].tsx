@@ -13,8 +13,6 @@ import { getPost } from "@Api/posts";
 
 import { IPost } from "@Interfaces/Post";
 
-import "@Styles/Post.scss";
-
 const Post: FC = () => {
   const router = useRouter();
   const { slug } = router.query;

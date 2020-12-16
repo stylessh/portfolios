@@ -8,7 +8,6 @@ import Layout from "@Components/Layout";
 import { getPosts, getPostsNum } from "@Api/posts";
 import { IPost } from "@Interfaces/Post";
 
-import styles from "@Styles/ViewPosts.module.scss";
 import { FC, useEffect, useState } from "react";
 
 type PostsProps = {
@@ -33,7 +32,7 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
   return (
     <Layout>
       <Head title="Posts" />
-      <main className={styles.posts}>
+      <main className="posts">
         <InfiniteScroll
           dataLength={postsLength}
           hasMore={posts.length < postsLength}
@@ -47,17 +46,17 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
         >
           {posts.length > 0
             ? posts.map((post) => (
-                <section className={styles.post} key={post.id}>
-                  <article className={styles.postHeader}>
+                <section className="post" key={post.id}>
+                  <article className="postHeader">
                     <Link href={`/posts/${post.slug}`}>
-                      <h2 className={styles.postTitle}>{post.title}</h2>
+                      <h2 className="postTitle">{post.title}</h2>
                     </Link>
 
-                    <h3 className={styles.date}>
+                    <h3 className="date">
                       {moment(post.published_at).format("LLL")}
                     </h3>
 
-                    <ul className={styles.tags}>
+                    <ul className="tags">
                       {post.tags.map((tag, i) => (
                         <li key={i}>#{tag}</li>
                       ))}
