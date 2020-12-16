@@ -13,8 +13,6 @@ import { getPost } from "@Api/posts";
 
 import { IPost } from "@Interfaces/Post";
 
-import styles from "@Styles/Post.module.scss";
-
 const Post: FC = () => {
   const router = useRouter();
   const { slug } = router.query;
@@ -43,23 +41,23 @@ const Post: FC = () => {
       {post.title ? (
         <>
           <Head title={post.title} />
-          <div className={styles.container}>
-            <section className={styles.post} key={post.id}>
-              <article className={styles.postHeader}>
-                <h2 className={styles.postTitle}>{post.title}</h2>
+          <div className="container">
+            <section className="post" key={post.id}>
+              <article className="postHeader">
+                <h2 className="postTitle">{post.title}</h2>
 
-                <h3 className={styles.date}>
+                <h3 className="date">
                   {moment(post.published_at).format("LLL")}
                 </h3>
 
-                <ul className={styles.tags}>
+                <ul className="tags">
                   {post.tags.map((tag, i: number) => (
                     <li key={i}>#{tag}</li>
                   ))}
                 </ul>
               </article>
 
-              <article className={`${styles.postBody} markdown-body`}>
+              <article className="postBody markdown-body">
                 <ReactMarkdown
                   source={post.content}
                   escapeHtml={false}
