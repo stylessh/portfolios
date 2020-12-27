@@ -2,7 +2,7 @@
 
 This is the source code of my portfolio's frontend.
 
-### Don't be aware to take a look into it!
+### Don't be afraid to take a look into it!
 
 ## Enviroment
 
