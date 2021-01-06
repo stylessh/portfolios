@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Repositories from "@Components/Repositories";
 
 import { IProject } from "@Interfaces/Project";
 
@@ -13,7 +14,6 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
 
   return (
     <>
-      <div id="projects"></div>
       <section className="projects">
         <div className="header">
           <h2 className="wow fadeInUp">Selected projects.</h2>
@@ -58,6 +58,8 @@ const HomeProjects: FC<ProjectsType> = ({ projects }) => {
           );
         })}
       </section>
+
+      <Repositories />
     </>
   );
 };
