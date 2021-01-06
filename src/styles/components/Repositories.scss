@@ -1,0 +1,74 @@
+.repositories {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  margin-top: 10em;
+
+  width: max-content;
+  height: 150px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+
+  animation: rowScroller linear infinite;
+  animation-duration: 300s;
+
+  .repo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-width: 300px;
+    height: 100%;
+
+    margin: 0 2em;
+    padding: 1.5em 1em;
+
+    text-decoration: none;
+    border-radius: 4px;
+    background: var(--secondarybackground);
+    box-shadow: 0px 5px 10px
+      rgba($color: var(--secondarybackground), $alpha: 0.5);
+
+    .info {
+      .name {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+      }
+
+      .description {
+        font-size: 0.9em;
+      }
+    }
+
+    .stats {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .counts {
+        div {
+          display: inline-block;
+          margin-right: 1em;
+        }
+      }
+
+      .lang {
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+@keyframes rowScroller {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}

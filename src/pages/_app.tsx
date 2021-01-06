@@ -21,6 +21,7 @@ import "@Styles/components/Hero.scss";
 import "@Styles/components/Projects.scss";
 import "@Styles/components/Contact.scss";
 import "@Styles/components/About.scss";
+import "@Styles/components/Repositories.scss";
 
 import "@Styles/Post.scss";
 import "@Styles/ViewPosts.scss";
