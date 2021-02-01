@@ -36,6 +36,12 @@ const Head: FC<HeadProps> = ({ title, description }) => {
       <meta property="og:image" content="/img/me.jpeg" />
       <meta property="og:type" content="object" />
 
+      {/* google verify */}
+      <meta
+        name="google-site-verification"
+        content="cwI4oEAnfIPu_QE25dNYyjK_IgyHSe6slCpv19w77Co"
+      />
+      
       {/* arc */}
       <script async src="https://arc.io/widget.min.js#BHfPxFAU"></script>
     </NextHead>
