@@ -15,21 +15,20 @@
 
   z-index: 10;
 
-  &.hide {
-    top: -200px;
-  }
-
   #theme {
     background: none;
     border: none;
     color: var(--maincolor);
     font-size: 1em;
-    margin-left: 3rem;
     cursor: pointer;
   }
 
   .brand {
     font-weight: bold;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .btn_menu {

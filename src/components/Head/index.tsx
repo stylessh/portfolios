@@ -35,6 +35,9 @@ const Head: FC<HeadProps> = ({ title, description }) => {
       <meta property="og:description" content={description || DEFAULT_DESC} />
       <meta property="og:image" content="/img/me.jpeg" />
       <meta property="og:type" content="object" />
+
+      {/* arc */}
+      <script async src="https://arc.io/widget.min.js#BHfPxFAU"></script>
     </NextHead>
   );
 };
