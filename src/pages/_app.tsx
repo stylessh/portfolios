@@ -8,7 +8,6 @@ import "markdown/styles.scss";
 import "aos/dist/aos.css";
 
 import Navbar from "@Components/Navbar";
-// import Cursor from "@Components/Cursor";
 import isMobile from "@Utils/isMobile";
 
 // components styles
@@ -29,19 +28,13 @@ import "@Styles/ViewPosts.scss";
 import "@Styles/components/Cursor.scss";
 
 import "@Styles/components/Button.scss";
-// loading
+
+// loading spinner
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    AOS.init({
-      mirror: true,
-      easing: "ease-in-out-sine",
-    });
-  }, []);
-
   useEffect(() => {
     const luxy = require("luxy.js");
 
@@ -51,11 +44,15 @@ function MyApp({ Component, pageProps }) {
         wrapperSpeed: 0.02,
       });
     }
+
+    AOS.init({
+      mirror: true,
+      easing: "ease-in-out-sine",
+    });
   }, []);
 
   return (
     <div className="app">
-      {/* <Cursor /> */}
       <Navbar />
 
       <Component {...pageProps} />

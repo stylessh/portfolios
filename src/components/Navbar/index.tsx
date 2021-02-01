@@ -30,7 +30,7 @@ const Navbar: FC = () => {
         menuName: "Menu.",
       });
 
-      document.body.style.overflowY = "scroll";
+      document.querySelector("body").setAttribute("style", "overflow: scroll");
     };
 
     router.events.on("routeChangeStart", exit);
@@ -52,7 +52,9 @@ const Navbar: FC = () => {
         menuName: "close.",
       });
 
-      document.body.style.overflowY = "hidden";
+      document
+        .querySelector("body")
+        .setAttribute("style", "overflow-y: hidden");
     } else if (open.clicked === true) {
       setOpen({
         initial: false,
@@ -60,7 +62,9 @@ const Navbar: FC = () => {
         menuName: "Menu.",
       });
 
-      document.body.style.overflowY = "scroll";
+      document
+        .querySelector("body")
+        .setAttribute("style", "overflow-y: scroll");
     } else if (open.clicked === false) {
       setOpen({
         initial: false,
@@ -68,7 +72,9 @@ const Navbar: FC = () => {
         menuName: "close.",
       });
 
-      document.body.style.overflowY = "hidden";
+      document
+        .querySelector("body")
+        .setAttribute("style", "overflow-y: hidden");
     }
   };
 
