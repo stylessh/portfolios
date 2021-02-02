@@ -57,7 +57,19 @@
       }
 
       .lang {
+        display: flex;
+        align-items: center;
         font-size: .8em;
+
+        .color {
+            display: inline-block;
+            width: .7em;
+            height: .7em;
+
+            margin-right: .6em;
+
+            border-radius: 100%;
+        }
       }
     }
   }
