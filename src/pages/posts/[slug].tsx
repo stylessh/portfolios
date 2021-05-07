@@ -1,9 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import moment from "moment";
 import ReactMarkdown from "react-markdown/with-html";
-import { useRouter } from "next/router";
-
-import NProgress from "nprogress";
 
 import CodeBlock from "@Components/CodeBlock";
 import Layout from "@Components/Layout";
@@ -13,29 +10,11 @@ import { getPost } from "@Api/posts";
 
 import { IPost } from "@Interfaces/Post";
 
-const Post: FC = () => {
-  const router = useRouter();
-  const { slug } = router.query;
+type PostProps = {
+  post: IPost;
+};
 
-  const [post, setPost] = useState<IPost>({});
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: IPost = await getPost(slug);
-
-      setPost(data);
-    };
-
-    setLoading(true);
-
-    getData();
-
-    setLoading(false);
-  }, []);
-
-  loading ? NProgress.start() : null;
-
+const Post: FC<PostProps> = ({ post }) => {
   return (
     <Layout>
       {post.title ? (
@@ -51,7 +30,7 @@ const Post: FC = () => {
                 </h3>
 
                 <ul className="tags">
-                  {post.tags.map((tag, i: number) => (
+                  {post.tags.map((tag: string, i: number) => (
                     <li key={i}>#{tag}</li>
                   ))}
                 </ul>
@@ -72,8 +51,14 @@ const Post: FC = () => {
   );
 };
 
-export async function getServerSideProps() {
-  return { props: {} };
+export async function getServerSideProps({ params }) {
+  const data: IPost = await getPost(params.slug);
+
+  return {
+    props: {
+      post: data,
+    },
+  };
 }
 
 export default Post;

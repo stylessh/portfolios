@@ -17,7 +17,6 @@ type PostsProps = {
 
 const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
   const [posts, setPosts] = useState<IPost[]>([]);
-  // const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
     setPosts(data);
@@ -71,7 +70,7 @@ const ViewPosts: FC<PostsProps> = ({ data, postsLength }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data: IPost[] = await getPosts();
   const postsLength: number = await getPostsNum();
 
